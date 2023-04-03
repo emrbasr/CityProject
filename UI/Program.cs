@@ -1,3 +1,6 @@
+using DataAccess.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace UI
 {
     public class Program
@@ -8,6 +11,8 @@ namespace UI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("context")));
 
             var app = builder.Build();
 

@@ -32,9 +32,10 @@ namespace ApiLayer.Controllers
         }
 
         [HttpPost("add")]
-        public void Insert(Sehir sehir)
+        public IActionResult Insert(Sehir sehir)
         {
             sehirDal.Insert(sehir);
+            return Created("", sehir);
            
         }
 
@@ -66,5 +67,7 @@ namespace ApiLayer.Controllers
             sehirDal.Delete(sehir);
             return new NoContentResult();
         }
+
+
     }
 }
